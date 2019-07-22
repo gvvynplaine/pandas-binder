@@ -1,0 +1,55 @@
+From c4bd605781f62662a98b0155c4b830858feaa877 Mon Sep 17 00:00:00 2001
+From: Tom Augspurger <tom.w.augspurger@gmail.com>
+Date: Mon, 22 Jul 2019 11:45:41 -0500
+Subject: [PATCH 1/3] PATCH: update conf.py
+
+---
+ doc/source/conf.py | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index 3ebc5d8b6..479ad9ae7 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -55,8 +55,6 @@ extensions = [
+     "sphinx.ext.extlinks",
+     "sphinx.ext.todo",
+     "numpydoc",  # handle NumPy documentation formatted docstrings
+-    "IPython.sphinxext.ipython_directive",
+-    "IPython.sphinxext.ipython_console_highlighting",
+     "matplotlib.sphinxext.plot_directive",
+     "sphinx.ext.intersphinx",
+     "sphinx.ext.coverage",
+@@ -64,9 +62,29 @@ extensions = [
+     "sphinx.ext.ifconfig",
+     "sphinx.ext.linkcode",
+     "nbsphinx",
++    "sphinxcontrib.jupyter",
+     "contributors",  # custom pandas extension
+ ]
+ 
++jupyter_conversion_mode = "all"
++
++# Write notebook creation metadata to the top of the notebook
++jupyter_write_metadata = False
++jupyter_default_lang = "python3"
++# Add Ipython as Synonym for tests
++jupyter_lang_synonyms = ["python"]
++
++jupyter_kernels = {
++    "python3": {
++        "kernelspec": {
++            "display_name": "Python",
++            "language": "python3",
++            "name": "python3"
++        },
++        "file_extension": ".py",
++    },
++}
++
+ exclude_patterns = ["**.ipynb_checkpoints"]
+ try:
+     import nbconvert
+-- 
+2.21.0
+
