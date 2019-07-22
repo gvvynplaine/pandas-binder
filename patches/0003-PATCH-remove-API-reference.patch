@@ -1,6 +1,6 @@
-From fecedbd610427c70511c4e2f906ad160ed5c5c68 Mon Sep 17 00:00:00 2001
+From 0a966655ed71677c576f49800fb7192835a6d4a9 Mon Sep 17 00:00:00 2001
 From: Tom Augspurger <tom.w.augspurger@gmail.com>
-Date: Mon, 22 Jul 2019 11:47:39 -0500
+Date: Mon, 22 Jul 2019 15:18:10 -0500
 Subject: [PATCH 3/3] PATCH: remove API reference
 
 ---

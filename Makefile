@@ -11,7 +11,9 @@ patches: pandas
 	git -C pandas reset --hard HEAD~3
 
 patch: pandas patches
-	cd pandas && git am ../patches/*.patch
+	# TODO: This leaves the pandas submodule in a dirty state. But we don't actually want to
+	# apply the changes, since the applied commits won't exist anywhere.
+	cd pandas && git apply ../patches/*.patch
 
 jupyter:
 	sphinx-build -b jupyter -d pandas/doc/build/doctrees -j 8 pandas/doc/source/ build/jupyter
