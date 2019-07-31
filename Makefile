@@ -1,5 +1,8 @@
 .PHONY: patches
 
+export GIT_COMMITTER_DATE = Wed, 31 Jul 2019 12:00:00 -0500
+export GIT_AUTHOR_DATE = Wed, 31 Jul 2019 12:00:00 -0500
+
 patches: pandas
 	git -C pandas apply ../docs.patch
 	git -C pandas add doc/source/conf.py         && git -C pandas commit -m 'PATCH: update conf.py'
