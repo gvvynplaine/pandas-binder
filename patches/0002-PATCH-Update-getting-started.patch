@@ -1,20 +1,20 @@
-From 229080ede6a22584b72ee8ab658831908965e34e Mon Sep 17 00:00:00 2001
+From 08a1fbdd03451a812a44320f34dea4727fe0444b Mon Sep 17 00:00:00 2001
 From: Tom Augspurger <tom.w.augspurger@gmail.com>
 Date: Wed, 31 Jul 2019 12:00:00 -0500
 Subject: [PATCH 2/3] PATCH: update getting-started
 
 ---
- doc/source/getting_started/10min.rst          | 164 ++++-----
+ doc/source/getting_started/10min.rst          | 168 ++++-----
  doc/source/getting_started/basics.rst         | 318 +++++++++---------
  .../comparison/comparison_with_r.rst          |  30 +-
  .../comparison/comparison_with_sas.rst        |  50 +--
  .../comparison/comparison_with_sql.rst        |  60 ++--
  .../comparison/comparison_with_stata.rst      |  48 +--
- doc/source/getting_started/dsintro.rst        | 110 +++---
- 7 files changed, 390 insertions(+), 390 deletions(-)
+ doc/source/getting_started/dsintro.rst        | 112 +++---
+ 7 files changed, 393 insertions(+), 393 deletions(-)
 
 diff --git a/doc/source/getting_started/10min.rst b/doc/source/getting_started/10min.rst
-index 510c7ef97..4e878302e 100644
+index 510c7ef97..11d6b7b2d 100644
 --- a/doc/source/getting_started/10min.rst
 +++ b/doc/source/getting_started/10min.rst
 @@ -11,7 +11,7 @@ You can see more complex recipes in the :ref:`Cookbook<cookbook>`.
@@ -589,7 +589,7 @@ index 510c7ef97..4e878302e 100644
  
      df.groupby("grade").size()
  
-@@ -705,13 +705,13 @@ Plotting
+@@ -705,25 +705,25 @@ Plotting
  
  See the :ref:`Plotting <visualization>` docs.
  
@@ -605,7 +605,12 @@ index 510c7ef97..4e878302e 100644
  
     ts = pd.Series(np.random.randn(1000),
                    index=pd.date_range('1/1/2000', periods=1000))
-@@ -723,7 +723,7 @@ See the :ref:`Plotting <visualization>` docs.
+    ts = ts.cumsum()
+ 
+-   @savefig series_plot_basic.png
++
+    ts.plot()
+ 
  On a DataFrame, the :meth:`~DataFrame.plot` method is a convenience to plot all
  of the columns with labels:
  
@@ -614,6 +619,15 @@ index 510c7ef97..4e878302e 100644
  
     df = pd.DataFrame(np.random.randn(1000, 4), index=ts.index,
                       columns=['A', 'B', 'C', 'D'])
+@@ -731,7 +731,7 @@ of the columns with labels:
+ 
+    plt.figure()
+    df.plot()
+-   @savefig frame_plot_basic.png
++
+    plt.legend(loc='best')
+ 
+ Getting data in/out
 @@ -742,17 +742,17 @@ CSV
  
  :ref:`Writing to a csv file. <io.store_in_csv>`
@@ -2923,7 +2937,7 @@ index db6873863..beb25ad1e 100644
     tips.groupby(['sex', 'smoker']).first()
  
 diff --git a/doc/source/getting_started/dsintro.rst b/doc/source/getting_started/dsintro.rst
-index 2fb0b1636..33d190351 100644
+index 2fb0b1636..ca972a0c1 100644
 --- a/doc/source/getting_started/dsintro.rst
 +++ b/doc/source/getting_started/dsintro.rst
 @@ -11,7 +11,7 @@ structures in pandas to get you started. The fundamental behavior about data
@@ -3204,15 +3218,18 @@ index 2fb0b1636..33d190351 100644
  
     iris.assign(sepal_ratio=lambda x: (x['SepalWidth'] / x['SepalLength'])).head()
  
-@@ -530,7 +530,7 @@ common when using ``assign`` in a chain of operations. For example,
+@@ -530,9 +530,9 @@ common when using ``assign`` in a chain of operations. For example,
  we can limit the DataFrame to just those observations with a Sepal Length
  greater than 5, calculate the ratio, and plot:
  
 -.. ipython:: python
 +.. code:: python
++
  
-    @savefig basics_assign.png
+-   @savefig basics_assign.png
     (iris.query('SepalLength > 5')
+         .assign(SepalRatio=lambda x: x.SepalWidth / x.SepalLength,
+                 PetalRatio=lambda x: x.PetalWidth / x.PetalLength)
 @@ -556,7 +556,7 @@ Starting with Python 3.6 the order of ``**kwargs`` is preserved. This allows
  for *dependent* assignment, where an expression later in ``**kwargs`` can refer
  to a column created earlier in the same :meth:`~DataFrame.assign`.
